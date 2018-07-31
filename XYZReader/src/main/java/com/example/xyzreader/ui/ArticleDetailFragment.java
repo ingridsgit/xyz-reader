@@ -251,6 +251,7 @@ public class ArticleDetailFragment extends Fragment implements
                                         .setBackgroundColor(mMutedColor);
                                 Log.i("DETAILFRAGMENT", String.valueOf(mMutedColor) + "color");
                                 updateStatusBar();
+
                             }
                         }
 
