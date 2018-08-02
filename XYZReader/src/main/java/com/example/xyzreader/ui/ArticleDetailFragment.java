@@ -2,6 +2,7 @@ package com.example.xyzreader.ui;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.content.Intent;
@@ -40,11 +41,6 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
-/**
- * A fragment representing a single Article detail screen. This fragment is
- * either contained in a {@link ArticleListActivity} in two-pane mode (on
- * tablets) or a {@link ArticleDetailActivity} on handsets.
- */
 public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
@@ -145,10 +141,11 @@ public class ArticleDetailFragment extends Fragment implements
 
         mPhotoView = mRootView.findViewById(R.id.photo);
 //        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+        AppBarLayout appBarLayout = mRootView.findViewById(R.id.app_bar_layout);
 
-        toolbar = mRootView.findViewById(R.id.meta_bar);
-        getActivityCast().setSupportActionBar(toolbar);
-        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar = mRootView.findViewById(R.id.meta_bar);
+//        getActivityCast().setSupportActionBar(toolbar);
+//        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
