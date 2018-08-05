@@ -1,0 +1,84 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/ltgray">
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_photo_height"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_photo_height"
+        android:background="@drawable/photo_background_protection"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/detail_card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/detail_card_top_margin"
+        android:layout_marginBottom="@dimen/detail_card_bottom_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="@dimen/card_elevation">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/share_fab"
+            android:layout_width="@dimen/fab_size"
+            android:layout_height="@dimen/fab_size"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fab_margin_top"
+            android:layout_gravity="top|end"
+            android:contentDescription="@string/action_share"
+            android:src="@drawable/ic_share"
+            android:stateListAnimator="@animator/fab_state_list_anim"
+            app:elevation="@dimen/fab_elevation"
+            app:rippleColor="@color/fab_ripple_color" />
+
+    <com.example.xyzreader.ui.MaxWidthLinearLayout
+        android:id="@+id/maxWidthLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/max_witdh_layout_background"
+        android:maxWidth="@dimen/detail_card_max_width"
+        android:orientation="vertical"
+        >
+
+        <include
+            layout="@layout/metabar_layout"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/article_body"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/detail_body_horiz_margin"
+                android:layout_marginRight="@dimen/detail_body_horiz_margin"
+               style="@style/body_text" />
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </com.example.xyzreader.ui.MaxWidthLinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

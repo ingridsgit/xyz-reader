@@ -17,10 +17,10 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
-            android:paddingTop="4dp"
-            android:paddingBottom="@dimen/list_side_margin"
-            android:paddingEnd="@dimen/list_side_margin"
             android:paddingStart="@dimen/list_side_margin"
+            android:paddingEnd="@dimen/list_side_margin"
+            android:paddingBottom="@dimen/list_vertical_margin"
+            android:paddingTop="@dimen/list_vertical_margin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 

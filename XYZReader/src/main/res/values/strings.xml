@@ -8,6 +8,6 @@
     <string name="action_share">Share</string>
 
     <string name="up">Up</string>
-    <string name="book_cover" translatable="false">book_cover</string>
+    <string name="book_cover_transition" translatable="false">book_cover</string>
 
 </resources>

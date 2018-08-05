@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- detail -->
+    <dimen name="detail_body_horiz_margin">56dp</dimen>
+
+    <dimen name="detail_coordinator_layout_height">240dp</dimen>
+    <dimen name="detail_photo_height">160dp</dimen>
+    <dimen name="detail_metabar_height">80dp</dimen>
+    <dimen name="detail_metabar_title_height">48dp</dimen>
+
+</resources>

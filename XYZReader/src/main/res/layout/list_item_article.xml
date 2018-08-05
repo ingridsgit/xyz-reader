@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/card_margin"
-    card_view:cardCornerRadius="6dp"
+    android:foreground="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    card_view:cardElevation="4dp"
-    android:foreground="?selectableItemBackground">
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation"
+    >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/article_title"
+            app:layout_constraintBottom_toTopOf="@+id/article_subtitle"
             app:layout_constraintTop_toTopOf="parent">
 
             <!--suppress AndroidLintContentDescription -->
@@ -29,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/photo_placeholder"
                 android:scaleType="centerCrop"
-                android:transitionName="@string/book_cover"
                 />
 
             <View
@@ -42,39 +42,29 @@
 
         <TextView
             android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="24sp"
-            tools:text="Title"
+            android:padding="@dimen/card_tv_padding"
             app:layout_constraintBottom_toBottomOf="@id/frame"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Title"
+            style="@style/card_view_title"/>
 
         <TextView
             android:id="@+id/article_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:paddingBottom="16dp"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
-            android:textColor="@android:color/white"
-            android:background="@android:color/black"
+            android:paddingBottom="@dimen/card_tv_padding"
+            android:paddingEnd="@dimen/card_tv_padding"
+            android:paddingStart="@dimen/card_tv_padding"
+            android:background="@color/card_subtitle_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frame"
             tools:text="Author"
-            android:textSize="16sp"/>
+            style="@style/card_view_subtitle"
+            />
 
     </android.support.constraint.ConstraintLayout>
 

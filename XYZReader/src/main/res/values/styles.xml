@@ -24,8 +24,30 @@
 
     </style>
 
-    <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    <style name="card_view_title">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:textColor">@color/card_text_color</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="card_view_subtitle">
+        <item name="android:textSize">@dimen/card_subtitle_text_size</item>
+        <item name="android:textColor">@color/card_text_color</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="body_text">
+        <item name="android:ellipsize">end</item>
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:lineSpacingMultiplier">@fraction/detail_body_line_spacing_multiplier</item>
+        <item name="android:maxLines">20</item>
+        <item name="android:paddingBottom">@dimen/detail_body_bottom_margin</item>
+        <item name="android:paddingTop">@dimen/detail_body_top_margin</item>
+        <item name="android:textColorLink">@color/theme_accent</item>
+        <item name="android:textSize">@dimen/detail_body_text_size</item>
     </style>
 
 </resources>

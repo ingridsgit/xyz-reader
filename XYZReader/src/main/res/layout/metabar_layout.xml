@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/meta_bar"
+        android:layout_width="@dimen/detail_metabar_width"
+        android:layout_height="@dimen/detail_metabar_height"
+        android:layout_gravity="@integer/detail_metabar_gravity"
+        android:background="@color/toolbar_background"
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="@dimen/detail_metabar_inset_start"
+        app:layout_collapseMode="pin"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/detail_metabar_padding_end"
+            >
+
+            <TextView
+                android:id="@+id/article_title"
+                style="?android:attr/textAppearanceLarge"
+                tools:text="Ebook title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_metabar_title_height"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/title_text_color"
+                android:textSize="@dimen/detail_title_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/article_byline"
+                style="?android:attr/textAppearanceSmall"
+                tools:text="Date and Author"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_metabar_subtitle_height"
+                android:gravity="top"
+                android:textColor="@color/byline_text_color" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
