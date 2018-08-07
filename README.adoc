@@ -4,7 +4,7 @@ In this project, I redesigned an app to follow the Material Design guidelines an
 
 This project was an opportunity to improve an app’s design, a vital skill for building apps users will love. It also replicates a common developer task of updating and changing an app's design as new standards are released.
 
-![Screenshot](https://raw.githubusercontent.com/ingridsgit/xyz-reader/master/Screenshot_%5B1%5D.jpg)
+![Screenshot](xyz-reader/Screenshot1.jpg)
 
 
-![Screenshot](https://raw.githubusercontent.com/ingridsgit/xyz-reader/master/Screenshot_%5B2%5D.jpg)
+![Screenshot](xyz-reader/Screenshot2.jpg)
