@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/ltgray">
+    android:background="@color/ltgray"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_photo_height"
+        android:contentDescription="@string/photo_description"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,23 +31,19 @@
         android:id="@+id/detail_card_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/detail_card_top_margin"
         android:layout_marginBottom="@dimen/detail_card_bottom_margin"
+        android:layout_marginTop="@dimen/detail_card_top_margin"
+        app:cardElevation="@dimen/card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardElevation="@dimen/card_elevation">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/share_fab"
-            android:layout_width="@dimen/fab_size"
-            android:layout_height="@dimen/fab_size"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:layout_marginTop="@dimen/fab_margin_top"
+            style="@style/fab"
             android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/fab_margin_top"
             android:contentDescription="@string/action_share"
-            android:src="@drawable/ic_share"
-            android:stateListAnimator="@animator/fab_state_list_anim"
             app:elevation="@dimen/fab_elevation"
             app:rippleColor="@color/fab_ripple_color" />
 
@@ -54,7 +51,7 @@
         android:id="@+id/maxWidthLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/max_witdh_layout_background"
+        android:background="@color/max_width_layout_background"
         android:maxWidth="@dimen/detail_card_max_width"
         android:orientation="vertical"
         >
@@ -69,11 +66,11 @@
 
             <TextView
                 android:id="@+id/article_body"
+                style="@style/body_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/detail_body_horiz_margin"
-                android:layout_marginRight="@dimen/detail_body_horiz_margin"
-               style="@style/body_text" />
+               android:layout_marginRight="@dimen/detail_body_horiz_margin" />
 
         </android.support.v4.widget.NestedScrollView>
 

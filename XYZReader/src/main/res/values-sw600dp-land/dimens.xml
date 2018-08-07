@@ -8,7 +8,6 @@
     <dimen name="detail_card_bottom_margin">16dp</dimen>
     <dimen name="detail_card_max_width">704dp</dimen>
     <dimen name="detail_metabar_width">704dp</dimen>
-    <item name="wrap_content" format="integer" type="dimen">-2</item>
 
 
 

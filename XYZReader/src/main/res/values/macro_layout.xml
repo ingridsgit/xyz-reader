@@ -3,6 +3,5 @@
     <integer name="list_column_count">1</integer>
 
     <!-- detail -->
-    <bool name="detail_is_card">false</bool>
     <integer name="detail_metabar_gravity">80</integer> <!-- bottom -->
 </resources>

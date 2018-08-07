@@ -24,7 +24,6 @@
             <TextView
                 android:id="@+id/article_title"
                 style="?android:attr/textAppearanceLarge"
-                tools:text="Ebook title"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_metabar_title_height"
                 android:ellipsize="end"
@@ -33,15 +32,16 @@
                 android:maxLines="1"
                 android:textColor="@color/title_text_color"
                 android:textSize="@dimen/detail_title_text_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Ebook title" />
 
             <TextView
                 android:id="@+id/article_byline"
                 style="?android:attr/textAppearanceSmall"
-                tools:text="Date and Author"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_metabar_subtitle_height"
                 android:gravity="top"
-                android:textColor="@color/byline_text_color" />
+                android:textColor="@color/byline_text_color"
+                tools:text="Date and Author" />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>

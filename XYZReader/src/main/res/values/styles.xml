@@ -41,13 +41,19 @@
 
     <style name="body_text">
         <item name="android:ellipsize">end</item>
-        <item name="android:justificationMode">inter_word</item>
         <item name="android:lineSpacingMultiplier">@fraction/detail_body_line_spacing_multiplier</item>
         <item name="android:maxLines">20</item>
         <item name="android:paddingBottom">@dimen/detail_body_bottom_margin</item>
         <item name="android:paddingTop">@dimen/detail_body_top_margin</item>
         <item name="android:textColorLink">@color/theme_accent</item>
         <item name="android:textSize">@dimen/detail_body_text_size</item>
+    </style>
+
+    <style name="fab">
+        <item name="android:layout_height">@dimen/fab_size</item>
+        <item name="android:layout_width">@dimen/fab_size</item>
+        <item name="android:layout_marginEnd">@dimen/fab_margin</item>
+        <item name="android:src">@drawable/ic_share</item>
     </style>
 
 </resources>

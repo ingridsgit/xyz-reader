@@ -8,7 +8,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.Loader;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,15 +16,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.xyzreader.R;
@@ -51,11 +47,21 @@ public class ArticleListActivity extends AppCompatActivity implements
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss");
     // Use default locale format
-    private SimpleDateFormat outputFormat = new SimpleDateFormat();
+    private final SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private final GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private boolean mIsRefreshing = false;
+    private final BroadcastReceiver mRefreshingReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
+                mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
+                updateRefreshingUI();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,18 +95,6 @@ public class ArticleListActivity extends AppCompatActivity implements
         unregisterReceiver(mRefreshingReceiver);
     }
 
-    private boolean mIsRefreshing = false;
-
-    private BroadcastReceiver mRefreshingReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
-                mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
-                updateRefreshingUI();
-            }
-        }
-    };
-
     private void updateRefreshingUI() {
         mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
     }
@@ -126,10 +120,25 @@ public class ArticleListActivity extends AppCompatActivity implements
         mRecyclerView.setAdapter(null);
     }
 
-    private class Adapter extends RecyclerView.Adapter<ViewHolder> {
-        private Cursor mCursor;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final DynamicHeightNetworkImageView thumbnailView;
+        final TextView titleView;
+        final TextView subtitleView;
+        final FrameLayout frameLayout;
 
-        public Adapter(Cursor cursor) {
+        ViewHolder(View view) {
+            super(view);
+            thumbnailView = view.findViewById(R.id.thumbnail);
+            titleView = view.findViewById(R.id.article_title);
+            subtitleView = view.findViewById(R.id.article_subtitle);
+            frameLayout = view.findViewById(R.id.frame);
+        }
+    }
+
+    private class Adapter extends RecyclerView.Adapter<ViewHolder> {
+        private final Cursor mCursor;
+
+        Adapter(Cursor cursor) {
             mCursor = cursor;
         }
 
@@ -148,12 +157,11 @@ public class ArticleListActivity extends AppCompatActivity implements
                 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View view) {
-                    vh.thumbnailView.setTransitionName(getString(R.string.book_cover_transition) + String.valueOf(getItemId(vh.getAdapterPosition())));
+                    vh.frameLayout.setTransitionName(getString(R.string.book_cover_transition) + String.valueOf(getItemId(vh.getAdapterPosition())));
                     Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(
                             ArticleListActivity.this,
-                            vh.thumbnailView,
-                            vh.thumbnailView.getTransitionName()).toBundle();
-                    Log.i("LIST ACTIVITY", vh.thumbnailView.getTransitionName());
+                            vh.frameLayout,
+                            vh.frameLayout.getTransitionName()).toBundle();
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
                     startActivity(intent, bundle);
@@ -201,19 +209,6 @@ public class ArticleListActivity extends AppCompatActivity implements
         @Override
         public int getItemCount() {
             return mCursor.getCount();
-        }
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public DynamicHeightNetworkImageView thumbnailView;
-        public TextView titleView;
-        public TextView subtitleView;
-
-        public ViewHolder(View view) {
-            super(view);
-            thumbnailView = view.findViewById(R.id.thumbnail);
-            titleView = view.findViewById(R.id.article_title);
-            subtitleView = view.findViewById(R.id.article_subtitle);
         }
     }
 }

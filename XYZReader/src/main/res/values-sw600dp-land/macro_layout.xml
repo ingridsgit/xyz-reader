@@ -1,5 +1,4 @@
 <resources>
     <!-- detail -->
-    <bool name="detail_is_card">true</bool>
     <integer name="detail_metabar_gravity">48</integer> <!-- top -->
 </resources>
